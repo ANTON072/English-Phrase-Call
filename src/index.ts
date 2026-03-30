@@ -55,12 +55,14 @@ async function main() {
 
   console.log(`${phrases.length}件の単語を取得しました。\n`);
 
+  let count = 0;
   while (true) {
+    count++;
     const phrase = pickRandom(phrases);
 
     // 英語を表示
     const posLabel = phrase.partOfSpeech.length > 0 ? ` (${phrase.partOfSpeech.join(", ")})` : "";
-    console.log(`📝 ${phrase.word}${posLabel}`);
+    console.log(`[${count}] 📝 ${phrase.word}${posLabel}`);
     if (phrase.example) {
       console.log(`   ${phrase.example}`);
     }

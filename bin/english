@@ -1,0 +1,8 @@
+#!/bin/bash
+SCRIPT="$0"
+if [ -L "$SCRIPT" ]; then
+  LINK="$(readlink "$SCRIPT")"
+  SCRIPT="$(cd "$(dirname "$SCRIPT")" && cd "$(dirname "$LINK")" && pwd)/$(basename "$LINK")"
+fi
+DIR="$(cd "$(dirname "$SCRIPT")/.." && pwd)"
+exec "$DIR/node_modules/.bin/tsx" "$DIR/src/index.ts"
